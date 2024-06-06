@@ -1,0 +1,107 @@
+{
+	"chipName": "bs21",
+	"seriesName": "cfbb",
+	"board": "bs21",
+	"compile": {
+		"custom_build_command": "bs21-sle-ble-central-peripheral",
+		"tool_chain": [
+			"cfbb"
+		],
+		"map_path": "./output/bs21/acore/bs21-sle-ble-central-peripheral/application.map"
+	},
+	"debug": {
+		"elf_path": "./output/bs21/acore/bs21-sle-ble-central-peripheral/application.elf",
+		"breakpoints_limitation": "7",
+		"client": [
+			"gdb"
+		],
+		"tool": [
+			"jlink"
+		],
+		"params": [
+			{
+				"name": "jlink",
+				"param": {
+					"interface": [
+						"swd",
+						"jtag"
+					],
+					"speed": "5000",
+					"port": "3333"
+				}
+			}
+		],
+		"timeout_list": [
+			"15000",
+			"30000",
+			"60000",
+			"120000",
+			"-1"
+		],
+		"timeout_default": "60000"
+	},
+	"upload": {
+		"bin_path":  "./tools/pkg/fwpkg/bs21/bs21_all.fwpkg",
+		"reset": 1,
+		"burn_verification": 0,
+		"protocol": [
+			"serial",
+			"swd"
+		],
+		"baudList": [
+			"2400",
+			"4800",
+			"9600",
+			"19200",
+			"38400",
+			"57600",
+			"115200",
+			"230400",
+			"460800",
+			"500000",
+			"750000",
+			"921600",
+			"2000000"
+		],
+		"params": [
+			{
+				"name": "serial",
+				"param": {
+					"port": "",
+					"baud": "750000",
+					"stop_bit": "0",
+					"parity": "N",
+					"inside_protocol": ""
+				}
+			}
+		]
+	},
+	"console": {
+		"serial_port": "",
+		"baud": "115200",
+		"stop_bit": "0",
+		"parity": "N"
+	},
+	"need_sdk": true,
+	"need_project_path": true,
+	"chip_config": false,
+	"gui": false,
+	"platform": "cfbb",
+	"project_type": [
+		{
+			"name": "cfbb",
+			"base_on_sdk": true
+		}
+	],
+	"analysis": {
+		"elf_path": "./output/bs21/acore/bs21-sle-ble-central-peripheral/application.elf",
+		"map_path": "./output/bs21/acore/bs21-sle-ble-central-peripheral/application.map",
+		"tool_path": "./tools/bin/compiler/riscv/cc_riscv32_musl_b010/cc_riscv32_musl_fp_win/bin"
+	},
+	"kConfig": {
+		"menu_config_file_path": "config.in",
+		"menu_config_build_target": "bs21-sle-ble-central-peripheral",
+		"menu_config_core": "acore",
+		"menu_config_target_path": "./build/config/target_config/bs21/menuconfig/acore"
+	}
+}
