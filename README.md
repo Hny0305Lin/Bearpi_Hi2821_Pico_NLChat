@@ -13,7 +13,7 @@ BearPi-Pico H2821是一款基于高度集成 2.4GHz SoC BLE&SLE为主控芯片�
 
 - 目标用户群体：初学者、企业开发者
 
-- 购买链接：[点击进入](https://item.taobao.com/item.htm?id=633296694816)
+- 购买链接：[点击进入](https://item.taobao.com/item.htm?id=803331789469)
 
 - 开发教程：[点击进入](https://www.bearpi.cn/core_board/bearpi/pico/h2821/)
 
