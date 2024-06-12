@@ -12,6 +12,7 @@ config ENABLE_ALL_PERIPHERAL_SAMPLE
     select SAMPLE_SUPPORT_BUTTON
     select SAMPLE_SUPPORT_DMA
     select SAMPLE_SUPPORT_I2C
+    select SAMPLE_SUPPORT_I2S
     select SAMPLE_SUPPORT_KEYSCAN
     select SAMPLE_SUPPORT_PINCTRL
     select SAMPLE_SUPPORT_PWM
@@ -97,6 +98,19 @@ menu "I2C Sample Configuration"
 endmenu
 endif
 
+config SAMPLE_SUPPORT_I2S
+    bool
+    prompt "Support I2S Sample."
+    default n
+    depends on ENABLE_PERIPHERAL_SAMPLE
+    help
+        This option means support I2S Sample.
+
+if SAMPLE_SUPPORT_I2S
+menu "I2S Sample Configuration"
+    osource "application/samples/peripheral/i2s/Kconfig"
+endmenu
+endif
 
 config SAMPLE_SUPPORT_KEYSCAN
     bool

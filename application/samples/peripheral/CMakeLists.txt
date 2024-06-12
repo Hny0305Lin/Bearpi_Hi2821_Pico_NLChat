@@ -26,6 +26,10 @@ if(DEFINED CONFIG_SAMPLE_SUPPORT_I2C)
     add_subdirectory_if_exist(i2c)
 endif()
 
+if(DEFINED CONFIG_SAMPLE_SUPPORT_I2S)
+    add_subdirectory_if_exist(i2s)
+endif()
+
 if(DEFINED CONFIG_SAMPLE_SUPPORT_KEYSCAN)
     add_subdirectory_if_exist(keyscan)
 endif()
