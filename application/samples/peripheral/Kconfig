@@ -12,10 +12,7 @@ config ENABLE_ALL_PERIPHERAL_SAMPLE
     select SAMPLE_SUPPORT_BUTTON
     select SAMPLE_SUPPORT_DMA
     select SAMPLE_SUPPORT_I2C
-    select SAMPLE_SUPPORT_I2S
     select SAMPLE_SUPPORT_KEYSCAN
-    select SAMPLE_SUPPORT_PDM
-    select SAMPLE_SUPPORT_PDM_AMIC if ADC_SUPPORT_AMIC
     select SAMPLE_SUPPORT_PINCTRL
     select SAMPLE_SUPPORT_PWM
     select SAMPLE_SUPPORT_QDEC
@@ -100,20 +97,6 @@ menu "I2C Sample Configuration"
 endmenu
 endif
 
-config SAMPLE_SUPPORT_I2S
-    bool
-    prompt "Support I2S Sample."
-    default n
-    depends on ENABLE_PERIPHERAL_SAMPLE
-    help
-        This option means support I2S Sample.
-
-if SAMPLE_SUPPORT_I2S
-menu "I2S Sample Configuration"
-    osource "application/samples/peripheral/i2s/Kconfig"
-endmenu
-endif
-
 
 config SAMPLE_SUPPORT_KEYSCAN
     bool
@@ -122,34 +105,6 @@ config SAMPLE_SUPPORT_KEYSCAN
     depends on ENABLE_PERIPHERAL_SAMPLE
     help
         This option means support KEYSCAN Sample.
-
-config SAMPLE_SUPPORT_PDM
-    bool
-    prompt "Support PDM Sample."
-    default n
-    depends on ENABLE_PERIPHERAL_SAMPLE
-    help
-        This option means support PDM Sample.
-
-if SAMPLE_SUPPORT_PDM
-menu "PDM Sample Configuration"
-    osource "application/samples/peripheral/pdm/Kconfig"
-endmenu
-endif
-
-config SAMPLE_SUPPORT_PDM_AMIC
-    bool
-    prompt "Support PDM AMIC Sample."
-    default n
-    depends on ENABLE_PERIPHERAL_SAMPLE && ADC_SUPPORT_AMIC
-    help
-        This option means support PDM AMIC Sample.
-
-if SAMPLE_SUPPORT_PDM_AMIC
-menu "PDM AMIC Sample Configuration"
-    osource "application/samples/peripheral/pdm_amic/Kconfig"
-endmenu
-endif
 
 config SAMPLE_SUPPORT_PINCTRL
     bool

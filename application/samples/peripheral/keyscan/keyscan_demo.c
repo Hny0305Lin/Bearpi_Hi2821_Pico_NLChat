@@ -48,6 +48,11 @@ uint8_t g_app_key_map[CONFIG_KEYSCAN_ENABLE_ROW][CONFIG_KEYSCAN_ENABLE_COL] = {
     { 0x5F, 0x5C, 0x61, 0x5E, 0x59, 0x62, 0x55, 0x5B },
     { 0x54, 0x60, 0x56, 0x57, 0x5D, 0x5A, 0x58, 0x63 }
 };
+
+static uint8_t g_gpio_map[CONFIG_KEYSCAN_ENABLE_ROW + CONFIG_KEYSCAN_ENABLE_COL] = {
+    31, 24, 14, 23, 27, 28, 10, 11, 30, 13, 15, 16, 25, 26, 12, 22,
+    2, 3, 4, 5, 6, 21, 9, 29 };
+
 #else
 uint8_t g_app_key_map[CONFIG_KEYSCAN_ENABLE_ROW][CONFIG_KEYSCAN_ENABLE_COL] = {
     { 0x05, 0x16 },  /* BS */
@@ -92,7 +97,9 @@ static void keyscan_entry(void)
 #if defined(CONFIG_KEYSCAN_USE_FULL_KEYS_TYPE)
     keyscan_porting_config_pins();
 #endif
-
+    if (keyscan_porting_set_gpio(g_gpio_map)) {
+        return;
+    }
     /* Set the key value matrix of Keyscan. */
     if (uapi_set_keyscan_value_map((uint8_t **)g_app_key_map,
         CONFIG_KEYSCAN_ENABLE_ROW, CONFIG_KEYSCAN_ENABLE_COL) == ERRCODE_SUCC) {

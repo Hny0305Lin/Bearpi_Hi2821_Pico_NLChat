@@ -2,10 +2,6 @@
 # @brief    cmake file
 # Copyright (c) CompanyNameMagicTag 2023-2023. All rights reserved.
 #===============================================================================
-if(DEFINED CONFIG_SAMPLE_SUPPORT_AFE)
-    add_subdirectory_if_exist(afe)
-endif()
-
 if(DEFINED CONFIG_SAMPLE_SUPPORT_BLINKY)
     add_subdirectory_if_exist(blinky)
 endif()
@@ -30,20 +26,8 @@ if(DEFINED CONFIG_SAMPLE_SUPPORT_I2C)
     add_subdirectory_if_exist(i2c)
 endif()
 
-if(DEFINED CONFIG_SAMPLE_SUPPORT_I2S)
-    add_subdirectory_if_exist(i2s)
-endif()
-
 if(DEFINED CONFIG_SAMPLE_SUPPORT_KEYSCAN)
     add_subdirectory_if_exist(keyscan)
-endif()
-
-if(DEFINED CONFIG_SAMPLE_SUPPORT_PDM)
-    add_subdirectory_if_exist(pdm)
-endif()
-
-if(DEFINED CONFIG_SAMPLE_SUPPORT_PDM_AMIC)
-    add_subdirectory_if_exist(pdm_amic)
 endif()
 
 if(DEFINED CONFIG_SAMPLE_SUPPORT_PINCTRL)
@@ -84,18 +68,6 @@ endif()
 
 if(DEFINED CONFIG_SAMPLE_SUPPORT_TIMER)
     add_subdirectory_if_exist(timer)
-endif()
-
-if(DEFINED CONFIG_SAMPLE_SUPPORT_EFLASH)
-    add_subdirectory_if_exist(eflash)
-endif()
-
-if(DEFINED CONFIG_SAMPLE_SUPPORT_CALENDAR)
-    add_subdirectory_if_exist(calendar)
-endif()
-
-if(DEFINED CONFIG_SAMPLE_SUPPORT_I2S_DMA)
-    add_subdirectory_if_exist(i2s_dma)
 endif()
 
 set(SOURCES "${SOURCES}" PARENT_SCOPE)
