@@ -7,4 +7,4 @@ config PWM_PIN
 int
     prompt "Choose PWM pin."
     depends on SAMPLE_SUPPORT_PWM
-    default 2
+    default 31

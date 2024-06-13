@@ -30,6 +30,8 @@ static void app_i2c_init_pin(void)
         uapi_pin_set_mode(CONFIG_I2C_SCL_SLAVE_PIN, HAL_PIO_I2C1_CLK);
         uapi_pin_set_mode(CONFIG_I2C_SDA_SLAVE_PIN, HAL_PIO_I2C1_DATA);       
     }
+    uapi_pin_set_pull(CONFIG_I2C_SCL_SLAVE_PIN, PIN_PULL_UP);
+    uapi_pin_set_pull(CONFIG_I2C_SDA_SLAVE_PIN, PIN_PULL_UP);
 }
 
 void *i2c_slave_task(const char *arg)

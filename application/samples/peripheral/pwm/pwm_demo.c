@@ -21,33 +21,25 @@
 #define PWM_TASK_STACK_SIZE        0x1000
 #define PWM_TASK_PRIO              (osPriority_t)(17)
 
-static errcode_t pwm_sample_callback(uint8_t channel)
-{
-    osal_printk("PWM %d, cycle done. \r\n", channel);
-    return ERRCODE_SUCC;
-}
-
 static void *pwm_task(const char *arg)
 {
     UNUSED(arg);
     pwm_config_t cfg_no_repeat = {
-        50,
         200,
+        50,
         0,
         0,
         true
     };
 
-    uapi_pin_set_mode(30, HAL_PIO_PWM0);
+    uapi_pin_set_mode(CONFIG_PWM_PIN, HAL_PIO_PWM0);
     uapi_pwm_init();
-    uapi_pwm_open(PWM_CHANNEL, &cfg_no_repeat);
 
     uapi_tcxo_delay_ms((uint32_t)TEST_TCXO_DELAY_1000MS);
-    uapi_pwm_unregister_interrupt(PWM_GROUP_ID);
-    uapi_pwm_register_interrupt(PWM_GROUP_ID, pwm_sample_callback);
 
     uint8_t channel = PWM_CHANNEL;
     uapi_pwm_set_group(PWM_GROUP_ID, &channel, 1);
+    uapi_pwm_open(PWM_CHANNEL, &cfg_no_repeat);
     uapi_pwm_config_preload(PWM_GROUP_ID, channel, &cfg_no_repeat);
     uapi_pwm_start(PWM_GROUP_ID);
 
