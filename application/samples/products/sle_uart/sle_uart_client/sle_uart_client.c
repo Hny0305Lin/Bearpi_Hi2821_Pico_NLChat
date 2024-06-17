@@ -102,6 +102,7 @@ static void sle_uart_client_sample_seek_disable_cbk(errcode_t status)
     if (status != 0) {
         osal_printk("%s sle_uart_client_sample_seek_disable_cbk,status error = %x\r\n", SLE_UART_CLIENT_LOG, status);
     } else {
+        sle_remove_paired_remote_device(&g_sle_uart_remote_addr);
         sle_connect_remote_device(&g_sle_uart_remote_addr);
     }
 }
@@ -159,10 +160,9 @@ static void sle_uart_client_sample_connect_state_changed_cbk(uint16_t conn_id, c
     g_sle_uart_conn_id = conn_id;
     if (conn_state == SLE_ACB_STATE_CONNECTED) {
         osal_printk("%s SLE_ACB_STATE_CONNECTED\r\n", SLE_UART_CLIENT_LOG);
-        ssap_exchange_info_t info = {0};
-        info.mtu_size = SLE_MTU_SIZE_DEFAULT;
-        info.version = 1;
-        ssapc_exchange_info_req(0, conn_id, &info);
+        if (pair_state == SLE_PAIR_NONE) {
+            sle_pair_remote_device(&g_sle_uart_remote_addr);
+        }
 #ifdef CONFIG_SAMPLE_SUPPORT_LOW_LATENCY_TYPE
         sle_uart_client_sample_set_phy_param();
         osal_msleep(SLE_UART_TASK_DELAY_MS);
@@ -174,15 +174,29 @@ static void sle_uart_client_sample_connect_state_changed_cbk(uint16_t conn_id, c
         osal_printk("%s SLE_ACB_STATE_NONE\r\n", SLE_UART_CLIENT_LOG);
     } else if (conn_state == SLE_ACB_STATE_DISCONNECTED) {
         osal_printk("%s SLE_ACB_STATE_DISCONNECTED\r\n", SLE_UART_CLIENT_LOG);
+        sle_remove_paired_remote_device(&g_sle_uart_remote_addr);
         sle_uart_start_scan();
     } else {
         osal_printk("%s status error\r\n", SLE_UART_CLIENT_LOG);
     }
 }
 
+void  sle_uart_client_sample_pair_complete_cbk(uint16_t conn_id, const sle_addr_t *addr, errcode_t status)
+{
+    osal_printk("%s pair complete conn_id:%d, addr:%02x***%02x%02x\n", SLE_UART_CLIENT_LOG, conn_id,
+                addr->addr[0], addr->addr[4], addr->addr[5]);
+    if (status == 0) {
+        ssap_exchange_info_t info = {0};
+        info.mtu_size = SLE_MTU_SIZE_DEFAULT;
+        info.version = 1;
+        ssapc_exchange_info_req(0, g_sle_uart_conn_id, &info);
+    }
+}
+
 static void sle_uart_client_sample_connect_cbk_register(void)
 {
     g_sle_uart_connect_cbk.connect_state_changed_cb = sle_uart_client_sample_connect_state_changed_cbk;
+    g_sle_uart_connect_cbk.pair_complete_cb =  sle_uart_client_sample_pair_complete_cbk;
     sle_connection_register_callbacks(&g_sle_uart_connect_cbk);
 }
 
