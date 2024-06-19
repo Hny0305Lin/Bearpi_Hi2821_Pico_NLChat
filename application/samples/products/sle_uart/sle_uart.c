@@ -93,15 +93,25 @@ static void ssaps_server_read_request_cbk(uint8_t server_id, uint16_t conn_id, s
 {
     osal_printk("%s ssaps read request cbk callback server_id:%x, conn_id:%x, handle:%x, status:%x\r\n",
         SLE_UART_SERVER_LOG, server_id, conn_id, read_cb_para->handle, status);
+    /* 
+        osal_printk("\n");
+        osal_printk("Let's start chatting, This is the content of the client: %x", write_cb_para->value);
+    */
 }
 static void ssaps_server_write_request_cbk(uint8_t server_id, uint16_t conn_id, ssaps_req_write_cb_t *write_cb_para,
     errcode_t status)
 {
     osal_printk("%s ssaps write request callback cbk server_id:%x, conn_id:%x, handle:%x, status:%x\r\n",
         SLE_UART_SERVER_LOG, server_id, conn_id, write_cb_para->handle, status);
+    /* 
+        osal_printk("\n");
+        osal_printk("Let's start chatting, This is the content of the client: %x", write_cb_para->value);
+    */
+    osal_printk("\n Let's start chatting, This is the content of the client:");
     if ((write_cb_para->length > 0) && write_cb_para->value) {
         uapi_uart_write(CONFIG_SLE_UART_BUS, (uint8_t *)write_cb_para->value, write_cb_para->length, 0);
     }
+    osal_printk("\n");
 }
 
 #ifdef CONFIG_SAMPLE_SUPPORT_LOW_LATENCY_TYPE
@@ -239,8 +249,14 @@ void sle_uart_notification_cb(uint8_t client_id, uint16_t conn_id, ssapc_handle_
     unused(client_id);
     unused(conn_id);
     unused(status);
-    osal_printk("\n sle uart recived data : %s\r\n", data->data);
+    //osal_printk("\n sle uart recived data : %s\r\n", data->data);
+    //uapi_uart_write(CONFIG_SLE_UART_BUS, (uint8_t *)(data->data), data->data_len, 0);
+    
+    osal_printk("\n");
+    //osal_printk("Let's start chatting, This is the content of the server: %s", data->data);
+    osal_printk("\n Let's start chatting, This is the content of the server:");
     uapi_uart_write(CONFIG_SLE_UART_BUS, (uint8_t *)(data->data), data->data_len, 0);
+    osal_printk("\n");
 }
 
 void sle_uart_indication_cb(uint8_t client_id, uint16_t conn_id, ssapc_handle_value_t *data,
@@ -249,8 +265,14 @@ void sle_uart_indication_cb(uint8_t client_id, uint16_t conn_id, ssapc_handle_va
     unused(client_id);
     unused(conn_id);
     unused(status);
-    osal_printk("\n sle uart recived data : %s\r\n", data->data);
+    //osal_printk("\n sle uart recived data : %s\r\n", data->data);
+    //uapi_uart_write(CONFIG_SLE_UART_BUS, (uint8_t *)(data->data), data->data_len, 0);
+    
+    osal_printk("\n");
+    //osal_printk("Let's start chatting, This is the content of the server: %s", data->data);
+    osal_printk("\n Let's start chatting, This is the content of the server:");
     uapi_uart_write(CONFIG_SLE_UART_BUS, (uint8_t *)(data->data), data->data_len, 0);
+    osal_printk("\n");
 }
 
 static void sle_uart_client_read_int_handler(const void *buffer, uint16_t length, bool error)

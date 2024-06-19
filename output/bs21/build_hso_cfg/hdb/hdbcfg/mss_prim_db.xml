@@ -1,0 +1,147 @@
+<MSS>
+    <SUBSYSTEM NAME="bt_core" DATA_STRUCT_FILE="..\diag\prot_core_hso_msg_struct_def.txt" DESCRIPTION="" MULTIMODE="bt_core">
+        <MSG_LOG>
+        </MSG_LOG>
+        <LAYER_LOG>
+        </LAYER_LOG>
+        <USERPLANE_LOG>
+        </USERPLANE_LOG>
+    </SUBSYSTEM>
+    <SUBSYSTEM NAME="bt_status" DATA_STRUCT_FILE="..\diag\bt_status_hso_msg_struct_def.txt" DESCRIPTION="" MULTIMODE="bt_status">
+        <MSG_LOG><MSG STRUCTURE="bt_status_msg_id_100" NAME="%s;----&gt;%s; send sed_id=%d; %s" ID="0x1f0100" />
+			<MSG STRUCTURE="bt_status_msg_id_101" NAME="%s;----&gt;%s; send sed_id=%d; %s" ID="0x1f0101" />
+			<MSG STRUCTURE="bt_status_msg_id_102" NAME="%s;----&gt;%s; send sed_id=%d; %s" ID="0x1f0102" />
+			<MSG STRUCTURE="bt_status_msg_id_103" NAME="%s;----&gt;%s; send sed_id=%d; %s" ID="0x1f0103" />
+			<MSG STRUCTURE="bt_status_msg_id_104" NAME="%s;----&gt;%s; send sed_id=%d; %s" ID="0x1f0104" />
+			<MSG STRUCTURE="bt_status_msg_id_106" NAME="%s;----&gt;%s; send sed_id=%d; %s" ID="0x1f0106" />
+			<MSG STRUCTURE="bt_status_msg_id_107" NAME="%s;----&gt;%s; send sed_id=%d; %s" ID="0x1f0107" />
+			<MSG STRUCTURE="bt_status_msg_id_10b" NAME="%s;----&gt;%s; send sed_id=%d; %s" ID="0x1f010b" />
+			<MSG STRUCTURE="bt_status_msg_id_10c" NAME="%s;----&gt;%s; send sed_id=%d; %s" ID="0x1f010c" />
+			<MSG STRUCTURE="bt_status_msg_id_10d" NAME="%s;----&gt;%s; send sed_id=%d; %s" ID="0x1f010d" />
+			<MSG STRUCTURE="bt_status_msg_id_10e" NAME="%s;----&gt;%s; send sed_id=%d; %s" ID="0x1f010e" />
+			<MSG STRUCTURE="bt_status_msg_id_180" NAME="%s;----&gt;%s; send sed_id=%d; HCI_COMMAND_COMPLETE,  %s" ID="0x1f0180" />
+			<MSG STRUCTURE="bt_status_msg_id_181" NAME="%s;----&gt;%s; send sed_id=%d; HCI_COMMAND_STATUS,  %s" ID="0x1f0181" />
+			<MSG STRUCTURE="bt_status_msg_id_182" NAME="%s;----&gt;%s; send sed_id=%d; %s" ID="0x1f0182" />
+			<MSG STRUCTURE="bt_status_msg_id_183" NAME="%s;----&gt;%s; send sed_id=%d; %s" ID="0x1f0183" />
+			<MSG STRUCTURE="bt_status_msg_id_184" NAME="%s;----&gt;%s; send sed_id=%d; LL_UNKNOWN_RSP,  %s" ID="0x1f0184" />
+			<MSG STRUCTURE="bt_status_msg_id_185" NAME="%s;----&gt;%s; send sed_id=%d; LL_REJECT_EXT_IND,  %s" ID="0x1f0185" />
+			<MSG STRUCTURE="bt_status_msg_id_186" NAME="%s;----&gt;%s; send sed_id=%d; HCI_GLE_COMMAND_COMPLETE,  %s" ID="0x1f0186" />
+			<MSG STRUCTURE="bt_status_msg_id_187" NAME="%s;----&gt;%s; send sed_id=%d; HCI_GLE_COMMAND_STATUS,  %s" ID="0x1f0187" />
+			<MSG STRUCTURE="bt_status_msg_id_188" NAME="%s;----&gt;%s; send sed_id=%d; %s" ID="0x1f0188" />
+			<MSG STRUCTURE="bt_status_msg_id_189" NAME="%s;----&gt;%s; send sed_id=%d; GLE_LL_UNKNOWN_RSP,  %s" ID="0x1f0189" />
+			<MSG STRUCTURE="bt_status_msg_id_18a" NAME="%s;----&gt;%s; send sed_id=%d; GLE_LL_REJECT_IND,  %s" ID="0x1f018a" />
+			<MSG STRUCTURE="bt_status_msg_id_200" NAME="%s;----&gt;%s; forward sed_id=%d; %s" ID="0x1f0200" />
+			<MSG STRUCTURE="bt_status_msg_id_201" NAME="%s;----&gt;%s; forward sed_id=%d; %s" ID="0x1f0201" />
+			<MSG STRUCTURE="bt_status_msg_id_202" NAME="%s;----&gt;%s; forward sed_id=%d; %s" ID="0x1f0202" />
+			<MSG STRUCTURE="bt_status_msg_id_203" NAME="%s;----&gt;%s; forward sed_id=%d; %s" ID="0x1f0203" />
+			<MSG STRUCTURE="bt_status_msg_id_204" NAME="%s;----&gt;%s; forward sed_id=%d; %s" ID="0x1f0204" />
+			<MSG STRUCTURE="bt_status_msg_id_206" NAME="%s;----&gt;%s; forward sed_id=%d; %s" ID="0x1f0206" />
+			<MSG STRUCTURE="bt_status_msg_id_207" NAME="%s;----&gt;%s; forward sed_id=%d; %s" ID="0x1f0207" />
+			<MSG STRUCTURE="bt_status_msg_id_20b" NAME="%s;----&gt;%s; forward sed_id=%d; %s" ID="0x1f020b" />
+			<MSG STRUCTURE="bt_status_msg_id_20c" NAME="%s;----&gt;%s; forward sed_id=%d; %s" ID="0x1f020c" />
+			<MSG STRUCTURE="bt_status_msg_id_20d" NAME="%s;----&gt;%s; forward sed_id=%d; %s" ID="0x1f020d" />
+			<MSG STRUCTURE="bt_status_msg_id_20e" NAME="%s;----&gt;%s; forward sed_id=%d; %s" ID="0x1f020e" />
+			<MSG STRUCTURE="bt_status_msg_id_300" NAME="%s; sed_id=%d; SAVED HEAD %s; linenum=%d" ID="0x1f0300" />
+			<MSG STRUCTURE="bt_status_msg_id_301" NAME="%s; sed_id=%d; SAVED HEAD %s; linenum=%d" ID="0x1f0301" />
+			<MSG STRUCTURE="bt_status_msg_id_302" NAME="%s; sed_id=%d; SAVED HEAD %s; linenum=%d" ID="0x1f0302" />
+			<MSG STRUCTURE="bt_status_msg_id_303" NAME="%s; sed_id=%d; SAVED HEAD %s; linenum=%d" ID="0x1f0303" />
+			<MSG STRUCTURE="bt_status_msg_id_304" NAME="%s; sed_id=%d; SAVED HEAD %s; linenum=%d" ID="0x1f0304" />
+			<MSG STRUCTURE="bt_status_msg_id_306" NAME="%s; sed_id=%d; SAVED HEAD %s; linenum=%d" ID="0x1f0306" />
+			<MSG STRUCTURE="bt_status_msg_id_307" NAME="%s; sed_id=%d; SAVED HEAD %s; linenum=%d" ID="0x1f0307" />
+			<MSG STRUCTURE="bt_status_msg_id_30b" NAME="%s; sed_id=%d; SAVED HEAD %s; linenum=%d" ID="0x1f030b" />
+			<MSG STRUCTURE="bt_status_msg_id_30c" NAME="%s; sed_id=%d; SAVED HEAD %s; linenum=%d" ID="0x1f030c" />
+			<MSG STRUCTURE="bt_status_msg_id_30d" NAME="%s; sed_id=%d; SAVED HEAD %s; linenum=%d" ID="0x1f030d" />
+			<MSG STRUCTURE="bt_status_msg_id_30e" NAME="%s; sed_id=%d; SAVED HEAD %s; linenum=%d" ID="0x1f030e" />
+			<MSG STRUCTURE="bt_status_msg_id_400" NAME="%s; sed_id=%d; SAVED TAIL %s; linenum=%d" ID="0x1f0400" />
+			<MSG STRUCTURE="bt_status_msg_id_401" NAME="%s; sed_id=%d; SAVED TAIL %s; linenum=%d" ID="0x1f0401" />
+			<MSG STRUCTURE="bt_status_msg_id_402" NAME="%s; sed_id=%d; SAVED TAIL %s; linenum=%d" ID="0x1f0402" />
+			<MSG STRUCTURE="bt_status_msg_id_403" NAME="%s; sed_id=%d; SAVED TAIL %s; linenum=%d" ID="0x1f0403" />
+			<MSG STRUCTURE="bt_status_msg_id_404" NAME="%s; sed_id=%d; SAVED TAIL %s; linenum=%d" ID="0x1f0404" />
+			<MSG STRUCTURE="bt_status_msg_id_406" NAME="%s; sed_id=%d; SAVED TAIL %s; linenum=%d" ID="0x1f0406" />
+			<MSG STRUCTURE="bt_status_msg_id_407" NAME="%s; sed_id=%d; SAVED TAIL %s; linenum=%d" ID="0x1f0407" />
+			<MSG STRUCTURE="bt_status_msg_id_40b" NAME="%s; sed_id=%d; SAVED TAIL %s; linenum=%d" ID="0x1f040b" />
+			<MSG STRUCTURE="bt_status_msg_id_40c" NAME="%s; sed_id=%d; SAVED TAIL %s; linenum=%d" ID="0x1f040c" />
+			<MSG STRUCTURE="bt_status_msg_id_40d" NAME="%s; sed_id=%d; SAVED TAIL %s; linenum=%d" ID="0x1f040d" />
+			<MSG STRUCTURE="bt_status_msg_id_40e" NAME="%s; sed_id=%d; SAVED TAIL %s; linenum=%d" ID="0x1f040e" />
+			<MSG STRUCTURE="bt_status_msg_id_801" NAME="%s; sed_id=%d; RESTORE HEAD file=%s; linenum=%d" ID="0x1f0801" />
+			<MSG STRUCTURE="bt_status_msg_id_802" NAME="%s; sed_id=%d; RESTORE TAIL file=%s; linenum=%d" ID="0x1f0802" />
+			<MSG STRUCTURE="bt_status_msg_id_810" NAME="%s; sed_id=%d; TRANS_STATE=%s; linenum=%d" ID="0x1f0810" />
+			</MSG_LOG><LAYER_LOG>
+        </LAYER_LOG>
+        <USERPLANE_LOG>
+        </USERPLANE_LOG>
+    </SUBSYSTEM>
+    <SUBSYSTEM NAME="acore" DATA_STRUCT_FILE="..\diag\prot_core_hso_msg_struct_def.txt" DESCRIPTION="" MULTIMODE="acore">
+        <MSG_LOG /><LAYER_LOG>
+        </LAYER_LOG>
+        <USERPLANE_LOG>
+        </USERPLANE_LOG>
+    </SUBSYSTEM>
+    <SUBSYSTEM NAME="dsp_core" DATA_STRUCT_FILE="..\diag\prot_core_hso_msg_struct_def.txt" DESCRIPTION="" MULTIMODE="dsp_core">
+        <MSG_LOG>
+        </MSG_LOG>
+        <LAYER_LOG>
+        </LAYER_LOG>
+        <USERPLANE_LOG>
+        </USERPLANE_LOG>
+    </SUBSYSTEM>
+    <SUBSYSTEM NAME="apps_core" DATA_STRUCT_FILE="..\diag\apps_core_hso_msg_struct_def.txt" DESCRIPTION="" MULTIMODE="apps_core">
+        <MSG_LOG>
+        </MSG_LOG>
+        <LAYER_LOG>
+        </LAYER_LOG>
+        <USERPLANE_LOG>
+        </USERPLANE_LOG>
+    </SUBSYSTEM>
+    <SUBSYSTEM NAME="prot_core" DATA_STRUCT_FILE="..\diag\prot_core_hso_msg_struct_def.txt" DESCRIPTION="" MULTIMODE="prot_core">
+        <MSG_LOG>
+        </MSG_LOG>
+        <LAYER_LOG>
+        </LAYER_LOG>
+        <USERPLANE_LOG>
+        </USERPLANE_LOG>
+    </SUBSYSTEM>
+    <SUBSYSTEM NAME="ota_msg" DATA_STRUCT_FILE="..\diag\fix_struct_def.txt" DESCRIPTION="" MULTIMODE="ota_msg">
+        <MSG_LOG><MSG NAME="OTA_BT_LMP_NAME_REQ" ID="0x21000" />
+			<MSG NAME="OTA_BT_LMP_NAME_RES" ID="0x21001" />
+			<MSG NAME="OTA_BT_LMP_FEATURE_REQ" ID="0x21002" />
+			<MSG NAME="OTA_BT_LMP_FEATURE_RES" ID="0x21003" />
+			<MSG NAME="OTA_BT_LMP_PDU_TX" ID="0x21004" />
+			<MSG NAME="OTA_BT_LMP_PDU_RX" ID="0x21005" />
+			<MSG NAME="OTA_BT_RW_CS_STRU" ID="0x21006" />
+			<MSG NAME="OTA_BT_EX_TAB" ID="0x21007" />
+			<MSG NAME="OTA_BT_KE_QUEUE" ID="0x21008" />
+			<MSG NAME="OTA_BT_KE_QUEUE" ID="0x21009" />
+			<MSG NAME="OTA_BT_LD_ENV_STRU" ID="0x2100a" />
+			<MSG NAME="OTA_BT_RWBT_ENV_STRU" ID="0x2100b" />
+			<MSG NAME="OTA_BT_AFH_CHNL_STAT" ID="0x2100c" />
+			<MSG NAME="OTA_BT_ACL_RX_LINK_STAT" ID="0x2100d" />
+			<MSG NAME="OTA_BT_SCO_STAT" ID="0x2100e" />
+			<MSG NAME="OTA_BT_RSSI_STAT" ID="0x2100f" />
+			<MSG NAME="OTA_BT_ACL_TX_STAT" ID="0x21010" />
+			<MSG NAME="OTA_BT_SLEEP_STAT" ID="0x21011" />
+			<MSG NAME="OTA_BT_GET_BT_EXT_CS" ID="0x21012" />
+			<MSG NAME="OTA_BT_GET_BLE_EXT_CS" ID="0x21013" />
+			<MSG NAME="OTA_BT_READ_BT_REG" ID="0x21014" />
+			<MSG NAME="OTA_BT_READ_BLE_REG" ID="0x21015" />
+			<MSG NAME="OTA_BT_CHNLSCAN_REPORT" ID="0x21016" />
+			<MSG NAME="OTA_BT_CHNLSCAN_DATA" ID="0x21017" />
+			<MSG NAME="OTA_BT_CHNLSCAN_RSSI" ID="0x21018" />
+			<MSG NAME="OTA_BT_CHNLSCAN_DUTYCYCYLE" ID="0x21019" />
+			<MSG NAME="OTA_EA_ELT_TAG" ID="0x2101b" />
+			</MSG_LOG><LAYER_LOG>
+        </LAYER_LOG>
+        <USERPLANE_LOG>
+        </USERPLANE_LOG>
+    </SUBSYSTEM>
+    <SUBSYSTEM NAME="fix_msg" DATA_STRUCT_FILE="..\diag\fix_struct_def.txt" DESCRIPTION="" MULTIMODE="fix_msg">
+        <MSG_LOG>
+            
+            <MSG NAME="EXCEPTION_LAST_RUN_INFO" ID="0x100003" />
+        </MSG_LOG>
+        <LAYER_LOG>
+        </LAYER_LOG>
+        <USERPLANE_LOG>
+        </USERPLANE_LOG>
+    </SUBSYSTEM>
+</MSS>
