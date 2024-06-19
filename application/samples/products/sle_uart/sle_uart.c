@@ -6,6 +6,14 @@
  * History: \n
  * 2023-07-17, Create file. \n
  */
+
+/**
+ * Copyright (c) 2019-FUTURE 浩瀚银河，版权所有. All rights reserved. \n
+ * 受Haohanyh Computer Software Products Open Source LICENSE保护 https://github.com/Hny0305Lin/LICENSE/blob/main/LICENSE
+ * 浩瀚银河只对sle_uart.c的修改内容保护，具体内容可参考LICENSE文件，或联系作者获得更多详细信息。
+ * 对此代码修改的内容如下：修改服务端/客户端对文本在串口uart上显示的处理，在Android上会做区分以及文本提取等处理，这才是关键的。
+ * 修改日期：2024-06-19
+ */
 #include "common_def.h"
 #include "soc_osal.h"
 #include "app_init.h"
