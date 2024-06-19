@@ -290,7 +290,7 @@ errcode_t sle_uart_server_send_report_by_uuid(const uint8_t *data, uint8_t len)
 }
 
 /* device通过handle向host发送数据：report */
-errcode_t sle_uart_server_send_report_by_handle(const uint8_t *data, uint8_t len)
+errcode_t sle_uart_server_send_report_by_handle(const uint8_t *data, uint16_t len)
 {
     ssaps_ntf_ind_t param = {0};
     uint8_t receive_buf[UART_BUFF_LENGTH] = { 0 }; /* max receive length. */
@@ -349,6 +349,10 @@ static void sle_pair_complete_cbk(uint16_t conn_id, const sle_addr_t *addr, errc
     sample_at_log_print("%s pair complete addr:%02x:**:**:**:%02x:%02x\r\n", SLE_UART_SERVER_LOG,
         addr->addr[BT_INDEX_0], addr->addr[BT_INDEX_4]);
     g_sle_pair_hdl = conn_id + 1;
+    ssap_exchange_info_t parameter = { 0 };
+    parameter.mtu_size = 520;
+    parameter.version = 1;
+    ssaps_set_info(g_server_id, &parameter);
 }
 
 static errcode_t sle_conn_register_cbks(void)

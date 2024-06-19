@@ -9,6 +9,7 @@
 #include "common_def.h"
 #include "soc_osal.h"
 #include "app_init.h"
+#include "pinctrl.h"
 #include "uart.h"
 #include "pm_clock.h"
 #include "sle_low_latency.h"
@@ -27,6 +28,50 @@
 
 #define SLE_UART_TASK_PRIO                  28
 #define SLE_UART_TASK_DURATION_MS           2000
+#define SLE_UART_BAUDRATE                   115200
+#define SLE_UART_TRANSFER_SIZE              256
+
+static uint8_t g_app_uart_rx_buff[SLE_UART_TRANSFER_SIZE] = { 0 };
+
+static uart_buffer_config_t g_app_uart_buffer_config = {
+    .rx_buffer = g_app_uart_rx_buff,
+    .rx_buffer_size = SLE_UART_TRANSFER_SIZE
+};
+
+static void uart_init_pin(void)
+{
+    if (CONFIG_SLE_UART_BUS == 0) {
+        uapi_pin_set_mode(CONFIG_UART_TXD_PIN, HAL_PIO_UART_L0_TXD);
+        uapi_pin_set_mode(CONFIG_UART_RXD_PIN, HAL_PIO_UART_L0_RXD);       
+    }else if (CONFIG_SLE_UART_BUS == 1) {
+        uapi_pin_set_mode(CONFIG_UART_TXD_PIN, HAL_PIO_UART_H0_TXD);
+        uapi_pin_set_mode(CONFIG_UART_RXD_PIN, HAL_PIO_UART_H0_RXD);       
+    }else if (CONFIG_SLE_UART_BUS == 2) {
+        uapi_pin_set_mode(CONFIG_UART_TXD_PIN, HAL_PIO_UART_L1_TXD);
+        uapi_pin_set_mode(CONFIG_UART_RXD_PIN, HAL_PIO_UART_L1_RXD);       
+    }
+}
+
+static void uart_init_config(void)
+{
+    uart_attr_t attr = {
+        .baud_rate = SLE_UART_BAUDRATE,
+        .data_bits = UART_DATA_BIT_8,
+        .stop_bits = UART_STOP_BIT_1,
+        .parity = UART_PARITY_NONE
+    };
+
+    uart_pin_config_t pin_config = {
+        .tx_pin = CONFIG_UART_TXD_PIN,
+        .rx_pin = CONFIG_UART_RXD_PIN,
+        .cts_pin = PIN_NONE,
+        .rts_pin = PIN_NONE
+    };
+    uapi_uart_deinit(CONFIG_SLE_UART_BUS);
+    uapi_uart_init(CONFIG_SLE_UART_BUS, &pin_config, &attr, NULL, &g_app_uart_buffer_config);
+
+}
+
 #if defined(CONFIG_SAMPLE_SUPPORT_SLE_UART_SERVER)
 #define SLE_UART_SERVER_DELAY_COUNT         5
 
@@ -152,11 +197,20 @@ static void *sle_uart_server_task(const char *arg)
     sle_uart_server_create_msgqueue();
     sle_uart_server_register_msg(sle_uart_server_write_msgqueue);
     sle_uart_server_init(ssaps_server_read_request_cbk, ssaps_server_write_request_cbk);
+
+
 #ifdef CONFIG_SAMPLE_SUPPORT_LOW_LATENCY_TYPE
     sle_uart_low_latency_tx_cbk_register();
 #endif
+    /* UART pinmux. */
+    uart_init_pin();
+
+    /* UART init config. */
+    uart_init_config();
+
+    uapi_uart_unregister_rx_callback(CONFIG_SLE_UART_BUS);
     errcode_t ret = uapi_uart_register_rx_callback(CONFIG_SLE_UART_BUS,
-                                                   UART_RX_CONDITION_FULL_OR_SUFFICIENT_DATA_OR_IDLE,
+                                                   UART_RX_CONDITION_FULL_OR_IDLE,
                                                    1, sle_uart_server_read_int_handler);
     if (ret != ERRCODE_SUCC) {
         osal_printk("%s Register uart callback fail.[%x]\r\n", SLE_UART_SERVER_LOG, ret);
@@ -212,8 +266,15 @@ static void sle_uart_client_read_int_handler(const void *buffer, uint16_t length
 static void *sle_uart_client_task(const char *arg)
 {
     unused(arg);
+    /* UART pinmux. */
+    uart_init_pin();
+
+    /* UART init config. */
+    uart_init_config();
+
+    uapi_uart_unregister_rx_callback(CONFIG_SLE_UART_BUS);
     errcode_t ret = uapi_uart_register_rx_callback(CONFIG_SLE_UART_BUS,
-                                                   UART_RX_CONDITION_FULL_OR_SUFFICIENT_DATA_OR_IDLE,
+                                                   UART_RX_CONDITION_FULL_OR_IDLE,
                                                    1, sle_uart_client_read_int_handler);
     if (ret != ERRCODE_SUCC) {
         osal_printk("Register uart callback fail.");

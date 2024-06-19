@@ -40,7 +40,7 @@ errcode_t sle_uart_server_init(ssaps_read_request_callback ssaps_read_callback, 
 
 errcode_t sle_uart_server_send_report_by_uuid(const uint8_t *data, uint8_t len);
 
-errcode_t sle_uart_server_send_report_by_handle(const uint8_t *data, uint8_t len);
+errcode_t sle_uart_server_send_report_by_handle(const uint8_t *data, uint16_t len);
 
 uint16_t sle_uart_client_is_connected(void);
 

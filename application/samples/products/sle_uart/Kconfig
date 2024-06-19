@@ -11,6 +11,18 @@ config SLE_UART_BUS
     help
         This option means the UART BUS of the currrent sample.
 
+config UART_TXD_PIN
+    int
+    prompt "Choose UART TXD pin."
+    depends on SAMPLE_SUPPORT_SLE_UART
+    default 19
+
+config UART_RXD_PIN
+    int
+    prompt "Choose UART RXD pin."
+    depends on SAMPLE_SUPPORT_SLE_UART
+    default 20
+
 choice
     prompt "Select sle uart type"
     default SAMPLE_SUPPORT_SLE_UART_SERVER

@@ -19,7 +19,7 @@
 #ifdef CONFIG_SAMPLE_SUPPORT_LOW_LATENCY_TYPE
 #include "sle_low_latency.h"
 #endif
-#define SLE_MTU_SIZE_DEFAULT            300
+#define SLE_MTU_SIZE_DEFAULT            520
 #define SLE_SEEK_INTERVAL_DEFAULT       100
 #define SLE_SEEK_WINDOW_DEFAULT         100
 #define UUID_16BIT_LEN                  2
